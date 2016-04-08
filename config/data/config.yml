@@ -1,0 +1,16 @@
+title:       ""
+
+description: ""
+keywords:    ""
+author:      "Cristian Ferrari"
+
+analytics:   "UA-XXXXX-X"
+tagmanager:  "GTM-XXXXXX"
+
+handheld_friendly: "True"
+mobile_optimized:  "320"
+
+# For iOS web apps.
+app_title:   ""
+app_capable: "yes"
+bar_style:   "black"
