@@ -1,0 +1,93 @@
+
+// Generic names
+// ---------------------------------------------------
+$size-mini:       480px !default;
+$size-small:      768px !default;
+$size-medium:     992px !default;
+$size-large:     1200px !default;
+$size-oversized: 1500px !default;
+
+$size-container:  960px !default;
+
+$size-container-sm:  500px !default;
+$size-container-md:  1020px !default;
+$size-container-lg:  1400px !default;
+
+// Supported sizes
+// $breakpoints: (
+//   mini:           $size-mini,
+//   small:          $size-small,
+//   medium:         $size-medium,
+//   large:          $size-large,
+//   oversized:      $size-oversized,
+//
+//   phone:          $size-mini,
+//   tablet:         $size-small,
+//   laptop:         $size-medium,
+//   desktop:        $size-large,
+//   cinema:         $size-oversized,
+//
+//   container:      $size-container,
+//
+//   container-sm:   $size-container-sm,
+//   container-md:   $size-container-md,
+//   container-lg:   $size-container-lg,
+// );
+
+
+@function breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+   @return map-get($breakpoints, $name);
+  }
+  @else {
+    @error "$name is not a valid breakpoint, was #{$name}.";
+  }
+}
+
+@function to($size) {
+  $media: $size; @if type-of($size) == string { $media: breakpoint($size); }
+  @return unquote('and (max-width: #{$media})');
+}
+
+@function from($size) {
+  $media: 1 + $size; @if type-of($size) == string { $media: breakpoint($size); }
+  @return unquote('and (min-width: #{$media})');
+}
+
+@function orientation($type) {
+  @return unquote('and (orientation: #{$type})');
+}
+
+@function resolution($size) {
+  @return unquote('and (-webkit-min-device-pixel-ratio: #{$size}), (min-resolution: #{96 * $size}dpi)');
+}
+
+@mixin response($breakpoints...) {
+  $mediatype:  screen;
+  $mediaquery: null;
+
+  @if nth($breakpoints, 1) == print {
+    $mediatype: print;
+  }
+  @else {
+    @each $breakpoint in $breakpoints {
+
+      @if type-of($breakpoint) == list {
+        $condition: nth($breakpoint, 1);
+        $size:      nth($breakpoint, 2);
+
+        @if      $condition == 'from' { $breakpoint: from($size); }
+        @else if $condition == 'to'   { $breakpoint: to($size); }
+      }
+      @else if $breakpoint == portrait  { $breakpoint: orientation(portrait);  }
+      @else if $breakpoint == landscape { $breakpoint: orientation(landscape); }
+      @else if $breakpoint == retina    { $breakpoint: resolution(2); }
+
+      $mediaquery: append($mediaquery, $breakpoint, space);
+    }
+
+    @media #{$mediatype} #{$mediaquery} {
+      @content;
+    }
+  }
+}

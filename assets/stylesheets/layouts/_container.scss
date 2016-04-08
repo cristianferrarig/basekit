@@ -1,0 +1,58 @@
+// Containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$containers: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px
+) !default;
+
+
+
+// Generate semantic grid columns with these mixins.
+
+@mixin make-container($container-gutter: $gutter) {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  ($container-gutter / 2);
+  padding-right: ($container-gutter / 2);
+  @if not $enable-flex {
+    @include clearfix();
+  }
+}
+
+// For each breakpoint, define the maximum width of the container in a media query
+
+@mixin make-container-max-widths($container-max-widths: $containers) {
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    @include response(from $breakpoint) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+
+
+@include export-once("container") {
+
+  // Container widths
+  //
+  // Set the container width, and override it for fixed navbars in media queries.
+
+  .container {
+    @include make-container();
+    @include make-container-max-widths();
+  }
+
+  // Fluid container
+  //
+  // Utilizes the mixin meant for fixed width containers, but without any defined
+  // width for fluid, full width layouts.
+
+  .container-fluid {
+    @include make-container();
+  }
+
+}

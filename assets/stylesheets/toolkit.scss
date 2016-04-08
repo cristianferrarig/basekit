@@ -1,3 +1,15 @@
-body {
-  content: "Toolkit Ready!";
-}
+body { content: "Toolkit Ready!"; }
+
+@import "tools";      // Suite of tools
+@import "settings";   // Global settings
+
+@import "core";       // The essential
+@import "base";       // HTML base components
+@import "layouts";    // Estructural components
+
+// @import "components"; // Awesome components
+// @import "utilities";  // Class & Mixins
+
+// @import "addons";
+
+@import "syntax";

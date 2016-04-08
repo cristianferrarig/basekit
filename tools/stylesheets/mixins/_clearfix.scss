@@ -1,0 +1,24 @@
+@mixin clearfix {
+
+  // Older browsers
+  //
+  // &:before,
+  // &:after {
+  //   content: "";
+  //   display: table;
+  // }
+  // &:after {
+  //   clear: both;
+  // }
+  // & {
+  //   zoom: 1; // For IE 6/7 (trigger hasLayout)
+  // }
+
+  // IE 8 and up
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+}

@@ -3,8 +3,10 @@ activate :directory_indexes
 activate :syntax, :line_numbers => true
 
 ready do
-  sprockets.append_path 'assets'
-  sprockets.append_path File.join root, 'vendor/bower'
+  sprockets.append_path "#{root}/assets"
+  sprockets.append_path "#{root}/tools"
+  sprockets.append_path "#{root}/vendor/bower"
+  # sprockets.append_path File.join root, 'vendor/bower'
   # sprockets.import_asset 'jquery'
   # sprockets.import_asset 'hashgrid'
 end

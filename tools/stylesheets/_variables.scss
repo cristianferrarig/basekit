@@ -1,0 +1,37 @@
+$unit:     8px;
+$half:     $unit / 2;  // 4
+$unit-1:   $unit * 1;  // 8
+$unit-2:   $unit * 2;  // 16
+$unit-3:   $unit * 3;  // 24
+$unit-4:   $unit * 4;  // 32
+$unit-5:   $unit * 5;  // 40
+$unit-6:   $unit * 6;  // 48
+$unit-7:   $unit * 7;  // 56
+$unit-8:   $unit * 8;  // 64
+$unit-9:   $unit * 9;  // 72
+$unit-10:  $unit * 10; // 80
+
+$gutter-s: $unit-1;
+$gutter:   $unit-2;
+$gutter-m: $unit-3;
+$gutter-l: $unit-4;
+
+$thin:        100;
+$extra-light: 200;
+$light:       300;
+$normal:      400;
+$medium:      500;
+$regular:     500;
+$semi-bold:   600;
+$bold:        700;
+$extra-bold:  800;
+$ultra-bold:  900;
+
+$light:     300;
+$normal:    400;
+$regular:   $normal;
+$semibold:  600;
+$medium:    $semibold;
+$bold:      700;
+$extrabold: 800;
+$black:     $extrabold;

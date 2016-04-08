@@ -1,0 +1,20 @@
+// Calculates the sRGB luma of a colour.
+//
+// Math nicked from a great Thoughtbot article by Reda Lemeden:
+// http://robots.thoughtbot.com/closer-look-color-lightness
+
+@function luma($color) {
+  $-local-red:   red(rgba($color, 1.0));
+  $-local-green: green(rgba($color, 1.0));
+  $-local-blue:  blue(rgba($color, 1.0));
+
+  $luma: ($-local-red   * 0.2126 +
+          $-local-green * 0.7152 +
+          $-local-blue  * 0.0722) / 255;
+
+  @return $luma;
+}
+
+@function color-is-light($color) {
+  @return luma($color) > .6;
+}

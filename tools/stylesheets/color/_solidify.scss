@@ -1,0 +1,6 @@
+@function solidify($alpha-color, $background-color: white) {
+  $percent: alpha($alpha-color) * 100%;
+  $opaque: opacify($alpha-color, 1);
+  $solid-color: mix($opaque, $background-color, $percent);
+  @return $solid-color;
+}

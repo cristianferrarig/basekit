@@ -1,0 +1,19 @@
+<%= Rouge::Themes::Github.render(:scope => '.code-highlight') %>
+
+.code-highlight {
+  margin: 8px 0;
+  line-height: 16px;
+  background: transparent;
+}
+.code-highlight table td {
+  padding: 0px;
+}
+.code-highlight table td.gutter {
+  border-right: 1px solid;
+  padding-right: 12px;
+  padding-left: 0;
+  font-weight: bold;
+}
+.code-highlight table td.code {
+  padding-left: 12px;
+}

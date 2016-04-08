@@ -1,0 +1,81 @@
+// Text themes
+$dark-theme:    $darker-tone !default;
+$light-theme:   white !default;
+
+$dark-shades: (
+  primary:   .9,
+  secondary: .6,
+  icon :     .5,
+  hint:      .3,
+  divider:   .1,
+) !default;
+
+$light-shades: (
+  primary:    1,
+  icon :     .8,
+  secondary: .7,
+  hint:      .3,
+  divider:   .1,
+) !default;
+
+@function shade-color($color,$shade:primary) {
+  $shaded-color: rgba($color,map-get($dark-shades,$shade));
+
+  @if color-is-light($color) {
+    $shaded-color: rgba($color,map-get($light-shades,$shade));
+  }
+
+  @return $shaded-color;
+}
+
+@function dark-color($shade) {
+  @return rgba($dark-theme, map-get($dark-shades, $shade));
+}
+@function light-color($shade) {
+  @return rgba($light-theme, map-get($light-shades, $shade));
+}
+
+// Light theme colors
+$light-color-primary:   light-color(primary);
+$light-color-secondary: light-color(secondary);
+$light-color-icon:      light-color(icon);
+$light-color-hint:      light-color(hint);
+$light-color-divider:   light-color(divider);
+
+// Dark theme colors
+$dark-color-primary:    dark-color(primary);
+$dark-color-secondary:  dark-color(secondary);
+$dark-color-icon:       dark-color(icon);
+$dark-color-hint:       dark-color(hint);
+$dark-color-divider:    dark-color(divider);
+
+$themes: (
+  light:   $light-theme,
+  dark:    $dark-theme,
+  success: $success-color-dark,
+  warning: $warning-color-dark,
+  danger:  $danger-color-dark,
+  notice:  $notice-color-dark,
+) !default;
+
+@mixin theme-classes($name) {
+  $color: map-get($themes,$name);
+  .primary, &          { color: shade-color($color, primary); }
+  .divider, hr         { color: shade-color($color, divider); }
+  .hint, .disabled     { color: shade-color($color, hint); }
+  .icon, i             { color: shade-color($color, icon); }
+  .secondary, .caption { color: shade-color($color, secondary); }
+  .solid               { color: $color; }
+}
+
+@include export-once("themes") {
+  @if $include-themes-classes {
+    body      { @include theme-classes(dark); }
+    .light    { @include theme-classes(light); }
+    .dark     { @include theme-classes(dark); }
+    .success  { @include theme-classes(success); }
+    .warning  { @include theme-classes(warning); }
+    .danger   { @include theme-classes(danger); }
+    .notice   { @include theme-classes(notice); }
+  }
+}

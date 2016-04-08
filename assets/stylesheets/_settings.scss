@@ -1,0 +1,34 @@
+// Colors
+
+$primary-color: #0F4E6C !default;
+$accent-color:  #6737DA !default;
+
+$base-color:    #FFFFFF !default;
+$font-color:    #000000 !default;
+
+$success-color: #24B36B !default;
+$warning-color: #FFBB27 !default;
+$danger-color:  #C60025 !default;
+$notice-color:  #3DB4CC !default;
+
+
+
+// Font
+
+$font-size:     14px       !default;
+$font-family:   sans-serif !default;
+
+
+
+// Grid
+
+$unit:          8px !default;
+$columns:       12 !default;
+$gutter:        $unit * 4 !default;
+
+
+
+// Settings
+
+$enable-flex: false;
+
