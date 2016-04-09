@@ -4,15 +4,14 @@
 @import "color/luma";
 @import "color/solidify";
 
-@import "mixins/export-once";
-@import "mixins/clearfix";
-@import "mixins/ellipsis";
-@import "mixins/screen-reader";
+@import "text/ellipsis";
+@import "text/screen-reader";
+@import "text/replace-text";
 
-@import "colors";
-@import "maps";
-@import "directions";
-@import "mediaquery";
-@import "replace-text";
+@import "utils/clearfix";
+@import "utils/export-once";
+@import "utils/maps";
+@import "utils/directions";
+@import "utils/mediaquery";
 
 @import "variables";
