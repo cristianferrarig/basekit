@@ -1,0 +1,7 @@
+@include export-once("utilities/visibility") {
+
+  .hidden {
+    display: none !important;
+  }
+
+}

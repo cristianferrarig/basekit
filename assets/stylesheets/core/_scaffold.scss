@@ -1,5 +1,12 @@
-$font-size-root:     16px !default;
+$base: (
+  font-family: sans-serif,
+  root-size:   16px,
+  font-size:   1rem,
+  line-height: 1.5,
+);
+
 $font-family-base:   sans-serif !default;
+$font-size-root:     16px !default;
 $font-size-base:     1rem !default;
 $line-height-base:   1.5 !default;
 

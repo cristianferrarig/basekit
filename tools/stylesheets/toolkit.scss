@@ -4,14 +4,18 @@
 @import "color/luma";
 @import "color/solidify";
 
-@import "text/ellipsis";
 @import "text/screen-reader";
-@import "text/replace-text";
+@import "text/text-truncate";
+@import "text/text-hide";
 
-@import "utils/clearfix";
-@import "utils/export-once";
-@import "utils/maps";
+@import "layout/clearfix";
+@import "layout/scrollable";
+@import "layout/resize";
+
+@import "utils/replace-text";
 @import "utils/directions";
 @import "utils/mediaquery";
+@import "utils/export-once";
+@import "utils/maps";
 
 @import "variables";

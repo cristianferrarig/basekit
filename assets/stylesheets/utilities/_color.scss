@@ -1,0 +1,19 @@
+//
+// Color utilities
+//
+
+@include export-once("utilities/colors") {
+
+  @each $name in $color-variants {
+    .bg-#{$name} { background-color: color($name); }
+  }
+
+  @each $name in $color-variants {
+    .text-#{$name} { color: color($name); }
+  }
+
+  @each $name in $color-variants {
+    .border-#{$name} { border-color: color($name); }
+  }
+
+}

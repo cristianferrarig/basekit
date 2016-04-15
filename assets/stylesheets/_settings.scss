@@ -11,9 +11,15 @@ $font-family:   sans-serif !default;
 
 // Grid
 
+// $unit:    8px !default;
+// $gutter:  $unit * 3 !default;
+// $spacing: $unit * 2 !default;
+
 $unit:          8px !default;
 $columns:       12 !default;
 $gutter:        $unit * 4 !default;
+
+
 
 
 

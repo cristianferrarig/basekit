@@ -1,0 +1,46 @@
+//
+// Text utilities
+//
+// 1. Alignment
+// 2. Responsive alignment
+// 3. Transformation
+// 4. Weight and italics
+//
+
+@include export-once("utilities/text") {
+
+  // Alignment
+
+  .text-justify        { text-align: justify !important; }
+  .text-nowrap         { white-space: nowrap !important; }
+  .text-truncate       { @include text-truncate; }
+
+  .text-left           { text-align:  left !important;    }
+  .text-center         { text-align:  center !important;  }
+  .text-right          { text-align:  right !important;   }
+
+  // Responsive alignment
+
+  @each $breakpoint in map-keys($breakpoints) {
+    @include response(from $breakpoint) {
+      .text-#{$breakpoint}-left   { text-align: left !important; }
+      .text-#{$breakpoint}-right  { text-align: right !important; }
+      .text-#{$breakpoint}-center { text-align: center !important; }
+    }
+  }
+
+  // Transformation
+
+  .text-lowercase      { text-transform: lowercase !important; }
+  .text-uppercase      { text-transform: uppercase !important; }
+  .text-capitalize     { text-transform: capitalize !important; }
+
+  // Weight and italics
+
+  .font-normal         { font-weight: normal; }
+  .font-bold           { font-weight: bold; }
+  .font-italic         { font-style: italic; }
+
+  .text-hide           { @include text-hide(); }
+
+}

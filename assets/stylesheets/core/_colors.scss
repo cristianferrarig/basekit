@@ -1,0 +1,70 @@
+$colors: (
+  // Brand colors
+  primary:  #0F4E6C,
+  accent:   #6737DA,
+  // Semantic colors
+  success:  #24B36B,
+  warning:  #FFBB27,
+  danger:   #C60025,
+  notice:   #3DB4CC,
+
+  // Interface colors
+  base:     #FAFAFA,
+  content:  #FFFFFF,
+  // Text themes
+  text:     #000000,
+  inversed: #FFFFFF,
+) !default;
+
+
+
+// Color availables for theming components
+
+$color-variants: (
+  primary,
+  accent,
+
+  success,
+  warning,
+  danger,
+  notice,
+) !default;
+
+$color-factors: (
+  light:  80%,
+  dark:  -80%,
+) !default;
+
+
+
+@function color($name, $variant:solid) {
+  @return map-get($colors, $name);
+}
+@function light-color($name) {
+  @return scale-color(color($name), $lightness: map-get($color-factors, light));
+}
+@function dark-color($name) {
+  @return scale-color(color($name), $lightness: map-get($color-factors, dark));
+}
+
+
+
+@include export-once("colors") {
+
+  body {
+    background-color: color(base);
+    color: color(text);
+  }
+
+}
+
+
+//
+// color(primary)
+// color(primary, dark)
+// color(primary, light)
+//
+// color(light, primary)
+// color(light, primary)
+// color(light, hint)
+//

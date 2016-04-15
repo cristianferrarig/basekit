@@ -11,17 +11,24 @@
 // xxl? Large +1440?
 
 $breakpoints: (
-  xs: 0,
+  // xs: 0,
   sm: 544px,
   md: 768px,
   lg: 992px,
   xl: 1200px
-) !default;
+);
+
+
 
 @include export-once("breakpoints") {
 
   body {
-    content: "mobile";
+    content: "screen-xs";
+    @each $breakpoint in map-keys($breakpoints) {
+      @include response(from $breakpoint) {
+        content: "screen-#{$breakpoint}";
+      }
+    }
   }
 
 }

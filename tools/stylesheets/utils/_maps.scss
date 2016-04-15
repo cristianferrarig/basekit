@@ -84,7 +84,7 @@
   $type: type-of($source);
   @if      ($type == list) { @include debug-list($source, $class); }
   @else if ($type == map)  { @include  debug-map($source, $class); }
-  @else    {
+  @else {
     @at-root {
       @debug-value >> #{$class} {
         #{type-of($source)}: "#{$source}";

@@ -5,6 +5,7 @@ activate :syntax, :line_numbers => true
 ready do
   sprockets.append_path "#{root}/assets"
   sprockets.append_path "#{root}/tools"
+  sprockets.append_path "#{root}/ui"
   sprockets.append_path "#{root}/vendor/bower"
   # sprockets.append_path File.join root, 'vendor/bower'
   # sprockets.import_asset 'jquery'
