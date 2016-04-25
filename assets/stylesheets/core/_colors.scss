@@ -1,70 +1,118 @@
+//
+// COLORS
+//
+// 1. Color variables
+//    1.1. Tones
+//    1.2. Interface
+//    1.3. Component themes
+// 2. Color scheme
+// 3. Find color function
+// 4. Color function
+//
+
+
+
+// 1. Color variables
+
+// 1.1. Tones
+
+$darkest-tone:     #142933 !default;
+$darker-tone:      #375666 !default;
+$dark-tone:        #7194A6 !default;
+$light-tone:       #E6EEF2 !default;
+$lighter-tone:     #F5F8FA !default;
+$lightest-tone:    #FFFFFF !default;
+
+// 1.2. Interface
+
+$base-color:       $lighter-tone !default;
+$front-color:      $lightest-tone !default;
+$text-color:       $darkest-tone !default;
+$accent-color:     #FF6A00 !default;
+
+// 1.3. Component themes
+
+$primary-color:    $darker-tone !default;
+$inverse-color:    $lightest-tone !default;
+
+$success-color:    #24B36B !default;
+$warning-color:    #FFBB27 !default;
+$danger-color:     #C60025 !default;
+
+
+
+// 2. Color scheme
+//
+// This is for easily handle colors in functions and mixins.
+// If a new variable color is added, set it on the map below.
+//
+// NOTE: Do not repeat names of colors across the groups.
+
 $colors: (
-  // Brand colors
-  primary:  #0F4E6C,
-  accent:   #6737DA,
-  // Semantic colors
-  success:  #24B36B,
-  warning:  #FFBB27,
-  danger:   #C60025,
-  notice:   #3DB4CC,
-
-  // Interface colors
-  base:     #FAFAFA,
-  content:  #FFFFFF,
-  // Text themes
-  text:     #000000,
-  inversed: #FFFFFF,
-) !default;
-
-
-
-// Color availables for theming components
-
-$color-variants: (
-  primary,
-  accent,
-
-  success,
-  warning,
-  danger,
-  notice,
-) !default;
-
-$color-factors: (
-  light:  80%,
-  dark:  -80%,
-) !default;
+  tones: (
+    darkest:  $darkest-tone,
+    darker:   $darker-tone,
+    dark:     $dark-tone,
+    light:    $light-tone,
+    lighter:  $lighter-tone,
+    lightest: $lightest-tone,
+  ),
+  interface: (
+    base:     $base-color,
+    front:    $front-color,
+    text:     $text-color,
+  ),
+  themes: (
+    accent:   $accent-color,
+    primary:  $primary-color,
+    inverse:  $inverse-color,
+    success:  $success-color,
+    warning:  $warning-color,
+    danger:   $danger-color,
+  ),
+);
 
 
+
+// 3. Find color function
+//
+// Find color `$name` in `$colors` map and return it.
+//
+// @param {String} $name - Color name
+// @return {Color} - RGBA Color
+
+@function find-color($name) {
+  $color:  null;
+  $finded: false;
+
+  @each $swatch in $colors {
+    $swatch_name:   nth($swatch, 1);
+    $swatch_colors: nth($swatch, 2);
+
+    @if map-has-key($swatch_colors, $name) {
+      @if $finded == false {
+        $color:  map-get($swatch_colors, $name);
+        $finded: true;
+      }
+      @else {
+        @error "The `#{$name}` color is duplicated";
+      }
+    }
+  }
+  @return $color;
+}
+
+
+
+// 4. Color function
+//
+// Find color `$name` and set `$variant` shade
+//
+// @param {String} $name - Color name
+// @param {String} $variant - Shade variant for color
+// @return {Color} - RGBA Color
 
 @function color($name, $variant:solid) {
-  @return map-get($colors, $name);
+  $color: find-color($name);
+  @return $color;
 }
-@function light-color($name) {
-  @return scale-color(color($name), $lightness: map-get($color-factors, light));
-}
-@function dark-color($name) {
-  @return scale-color(color($name), $lightness: map-get($color-factors, dark));
-}
-
-
-
-@include export-once("colors") {
-
-  body {
-    background-color: color(base);
-    color: color(text);
-  }
-
-}
-
-
-//
-// color(primary)
-// color(primary, dark)
-// color(primary, light)
-//
-// color(light, primary)
-// color(light, primary)
-// color(light, hint)
-//

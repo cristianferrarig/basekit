@@ -1,68 +1,18 @@
-//
-// Themes
-//
-// 1. Colors
-// 2. Text themes
-// 3. Text shades
-// 4. Html classes
-//
+// 6. Base styles
 
-// For text themes
-$text-themes: (
-  dark:      color(text),
-  light:     color(inversed),
-) !default;
+@include export-once("core/themes") {
 
-$text-shades: (
-  primary:    1,
-  secondary: .7,
-  hint:      .3,
-  icon:      .5,
-  divider:   .1,
-);
+  body {
+    background-color: $base-color;
+    color: $text-color;
+  }
 
-@function shade($name) {
-  @return map-get($text-shades,$name);
-}
+  .inverse {
+    color: $inverse-color;
+  }
 
-@function text-theme($color-name, $shade-name:primary) {
-  $color: map-get($colors, $color-name);
+  a {
 
-  @return rgba($color, shade($shade-name))
-}
-
-@mixin theme-classes($name) {
-  $color: map-get($text-themes,$name);
-  &                    { color: text-theme($name, primary); }
-  .divider, hr         { color: text-theme($name, divider); }
-  .hint, .disabled     { color: text-theme($name, hint); }
-  .icon, i             { color: text-theme($name, icon); }
-  .primary             { color: text-theme($name, primary); }
-  .caption, .secondary { color: text-theme($name, secondary); }
-  .solid               { color: $color; }
-}
-
-
-
-@include export-once("themes") {
-
-  .light   { @include theme-classes(light); }
-  .dark    { @include theme-classes(dark); }
-  .accent  { @include theme-classes(accent); }
+  }
 
 }
-
-
-
-
-
-/*
-$tones: (
-  darkest:  "",
-  darker:   "",
-  dark:     "",
-  light:    "",
-  lighter:  "",
-  lightest: "",
-);
-*/

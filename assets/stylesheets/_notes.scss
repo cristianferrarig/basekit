@@ -1,0 +1,346 @@
+
+$colors: (
+  // Brand colors
+
+  brand:     $brand-color,
+  accent:    $accent-color,
+  primary:   $primary-color,
+  base:      $tone-lighter,
+  front:     $tone-lightest,
+  text:      $tone-darkest,
+
+  // Semantic colors
+
+  success:   $success-color,
+  warning:   $warning-color,
+  danger:    $danger-color,
+
+) !default;
+
+
+
+
+
+
+
+$tones: (
+  darkest:  $darkest-tone,
+  darker:   $darker-tone,
+  dark:     $dark-tone,
+  light:    $light-tone,
+  lighter:  $lighter-tone,
+  lightest: $lightest-tone,
+) !default;
+
+
+$colors: (
+  // Brand colors
+
+  brand:     $brand-color,
+  accent:    $accent-color,
+  primary:   $primary-color,
+  base:      $tone-lighter,
+
+  // Semantic colors
+
+  success:   $success-color,
+  warning:   $warning-color,
+  danger:    $danger-color,
+
+) !default;
+
+$themes: (
+  text:      $tone-darkest,
+  inverse:   $tone-lightest,
+) !default;
+
+
+
+
+
+
+// Color tones
+
+$tone-darkest:     #142933 !default;
+$tone-darker:      #375666 !default;
+$tone-dark:        #7194A6 !default;
+$tone-light:       #E6EEF2 !default;
+$tone-lighter:     #F5F8FA !default;
+$tone-lightest:    #FFFFFF !default;
+
+
+// Brand colors
+
+$brand-color:      #FF6A00 !default;
+$accent-color:     $brand-color !default;
+$primary-color:    $tone-darker !default;
+$secondary-color:  $tone-dark !default;
+
+
+// Semantic colors
+
+$success-color:    #24B36B !default;
+$warning-color:    #FFBB27 !default;
+$danger-color:     #C60025 !default;
+
+
+// Interface colors
+
+$base-color:       tone(lighter) !default;
+$panel-color:      tone(lightest) !default;
+
+
+// Text themes
+
+$text-color:       tone(darkest) !default;
+$inversed-color:   tone(lightest) !default;
+
+
+
+@include export-once("colors") {
+
+  body {
+    background-color: $base-color;
+    color: $text-color;
+  }
+
+}
+
+
+
+
+// Color availables for theming components
+
+$color-factors: (
+  light:  80%,
+  dark:  -80%,
+) !default;
+
+
+
+
+//
+// color(primary)
+// color(primary, dark)
+// color(primary, light)
+//
+// color(light, primary)
+// color(light, primary)
+// color(light, hint)
+//
+
+@if $class-name == NULL { $class-name: $color-name; }
+
+  $class-name: if($class-name == NULL, $color-name, $class-name);
+
+
+
+
+
+@function light-color($name) {
+  @return scale-color(color($name), $lightness: map-get($color-factors, light));
+}
+@function dark-color($name) {
+  @return scale-color(color($name), $lightness: map-get($color-factors, dark));
+}
+
+// Get a color
+//
+// @param {string} $name []
+//   Nombre del color a usar, debe estar definido en `$colors`
+//
+// @example scss - Usage
+//   .brand-header {
+//     background-color: color(lightest);
+//   }
+//
+// @example css - CSS Output
+//   .brand-header {
+//     background-color: #FFFFFF;
+//   }
+
+
+
+$color-variants: (
+  primary,
+  accent,
+
+  success,
+  warning,
+  danger,
+  notice,
+);
+
+$shade-variants: (
+  solid:     1,
+  dark:      "",
+  light:     "",
+
+  primary:   .85,
+  secondary: .6,
+  hint:      .3,
+  icon:      .5,
+  divider:   .1,
+);
+
+
+
+// Color availables for theming components
+
+$color-variants: (
+  primary,
+  accent,
+
+  success,
+  warning,
+  danger,
+  notice,
+) !default;
+
+$color-factors: (
+  light:  80%,
+  dark:  -80%,
+) !default;
+
+
+
+@function color($name, $variant:solid) {
+  @return map-get($colors, $name);
+}
+@function light-color($name) {
+  @return scale-color(color($name), $lightness: map-get($color-factors, light));
+}
+@function dark-color($name) {
+  @return scale-color(color($name), $lightness: map-get($color-factors, dark));
+}
+
+
+//
+// color(primary)
+// color(primary, dark)
+// color(primary, light)
+//
+// color(light, primary)
+// color(light, primary)
+// color(light, hint)
+//
+
+/*
+
+$tones: (
+  darkest:  "",
+  darker:   "",
+  dark:     "",
+  light:    "",
+  lighter:  "",
+  lightest: "",
+);
+
+*/
+
+
+
+//
+// Themes
+//
+// 1. Colors
+// 2. Text themes
+// 3. Text shades
+// 4. Html classes
+//
+
+// For text themes
+$text-themes: (
+  dark:      color(text),
+  light:     color(inversed),
+) !default;
+
+$text-shades: (
+  primary:    1,
+  secondary: .7,
+  hint:      .3,
+  icon:      .5,
+  divider:   .1,
+);
+
+@function shade($name) {
+  @return map-get($text-shades,$name);
+}
+
+@function text-theme($color-name, $shade-name:primary) {
+  $color: map-get($colors, $color-name);
+
+  @return rgba($color, shade($shade-name))
+}
+
+@mixin theme-classes($name) {
+  $color: map-get($text-themes,$name);
+  &                    { color: text-theme($name, primary); }
+  .divider, hr         { color: text-theme($name, divider); }
+  .hint, .disabled     { color: text-theme($name, hint); }
+  .icon, i             { color: text-theme($name, icon); }
+  .primary             { color: text-theme($name, primary); }
+  .caption, .secondary { color: text-theme($name, secondary); }
+  .solid               { color: $color; }
+}
+
+
+
+@include export-once("themes") {
+
+  .light   { @include theme-classes(light); }
+  .dark    { @include theme-classes(dark); }
+  .accent  { @include theme-classes(accent); }
+
+}
+
+
+
+
+
+/*
+$tones: (
+  darkest:  "",
+  darker:   "",
+  dark:     "",
+  light:    "",
+  lighter:  "",
+  lightest: "",
+);
+*/
+
+
+
+@function get-all-colors() {
+  $value: true;
+
+  @return $value;
+}
+
+
+$tones-scale:       map-get($colors, tones);
+$interface-colors:  map-get($colors, interface);
+$semantic-colors:   map-get($colors, semantics);
+
+$all-colors: map-merge($tones-scale, $interface-colors);
+$all-colors: map-merge($all-colors, $semantic-colors);
+
+@include debug-map($colors,".colors");
+
+// @function color($name) {
+//   @return map-get($all-colors, $name);
+// }
+
+@mixin background-variant($name, $class:false) {
+  $class: if($class != false, $class, $name);
+
+  .bg-#{$class} {
+    padding: 10px;
+    background-color: color($name);
+  }
+}
+
+
+
+
+@include background-variant(warning);

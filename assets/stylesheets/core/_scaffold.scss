@@ -22,7 +22,7 @@ $line-height-base:   1.5 !default;
 
 
 
-@include export-once("scaffold") {
+@include export-once("core/scaffold") {
 
   // Height must be 100% for off canvas to work
   html, body {

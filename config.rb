@@ -2,14 +2,14 @@ activate :autoprefixer
 activate :directory_indexes
 activate :syntax, :line_numbers => true
 
-ready do
-  sprockets.append_path "#{root}/assets"
-  sprockets.append_path "#{root}/tools"
-  sprockets.append_path "#{root}/ui"
+after_configuration do
+  sprockets.append_path "#{root}/assets/stylesheets"
+  sprockets.append_path "#{root}/assets/javascripts"
+  sprockets.append_path "#{root}/tools/stylesheets"
+  sprockets.append_path "#{root}/ui/stylesheets"
   sprockets.append_path "#{root}/vendor/bower"
-  # sprockets.append_path File.join root, 'vendor/bower'
-  # sprockets.import_asset 'jquery'
-  # sprockets.import_asset 'hashgrid'
+# sprockets.import_asset 'jquery'
+# sprockets.import_asset 'hashgrid'
 end
 
 set :source,       "docs"

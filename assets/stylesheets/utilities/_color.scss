@@ -1,19 +1,82 @@
 //
 // Color utilities
 //
+// 1. Variants mixins
+// 2. Color classes
+//    2.1. Background
+//    2.2. Text
+//    2.3. Border
+//
+//
+// USAGE
+//
+// SCSS Mixin:
+// @include background-variant(accent);
+// @include background-variant(accent, sufix);
+// @include background-variant(#0000FF, puntual); // NOT YET
+//
+// CSS Output:
+// .bg-accent  { background-color: #0000FF; }
+// .bg-sufix   { background-color: #0000FF; }
+// .bg-puntual { background-color: #0000FF; } // NOT YET
+//
 
-@include export-once("utilities/colors") {
 
-  @each $name in $color-variants {
-    .bg-#{$name} { background-color: color($name); }
+
+// 1. Variants mixins
+
+@mixin background-variant($name) {
+  & {
+    background-color: color($name);
   }
+}
 
-  @each $name in $color-variants {
-    .text-#{$name} { color: color($name); }
+@mixin text-variant($name) {
+  & {
+    color: color($name);
   }
+}
 
-  @each $name in $color-variants {
-    .border-#{$name} { border-color: color($name); }
+@mixin border-variant($name) {
+  & {
+    border-color: color($name);
   }
+}
+
+
+
+// 2. Color classes
+
+@include export-once("utilities/color") {
+
+  // 2.1. Background
+
+  .bg-brand    { @include background-variant(brand); }
+  .bg-accent   { @include background-variant(accent); }
+  .bg-primary  { @include background-variant(primary); }
+  .bg-base     { @include background-variant(base); }
+  .bg-success  { @include background-variant(success); }
+  .bg-warning  { @include background-variant(warning); }
+  .bg-danger   { @include background-variant(danger); }
+
+  // 2.2. Text
+
+  .text-brand    { @include text-variant(brand); }
+  .text-accent   { @include text-variant(accent); }
+  .text-primary  { @include text-variant(primary); }
+  .text-base     { @include text-variant(base); }
+  .text-success  { @include text-variant(success); }
+  .text-warning  { @include text-variant(warning); }
+  .text-danger   { @include text-variant(danger); }
+
+  // 2.3. Border
+
+  .border-brand    { @include border-variant(brand); }
+  .border-accent   { @include border-variant(accent); }
+  .border-primary  { @include border-variant(primary); }
+  .border-base     { @include border-variant(base); }
+  .border-success  { @include border-variant(success); }
+  .border-warning  { @include border-variant(warning); }
+  .border-danger   { @include border-variant(danger); }
 
 }

@@ -1,14 +1,23 @@
-// Breakpoints
+//
+// BREAKPOINTS
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
-
+//
+// 1. Breakepoint sizes
+// 2. Body content for JS manipulatión
+//
 // xs -> Portrait phones (Extra small devices)
 // sm -> Landscape phones or phablets (Small devices)
 // md -> Tablets (Medium devices)
 // lg -> Tablet portrait, Desktops (Large devices)
 // xl -> Normal Desktop
 // xxl? Large +1440?
+//
+
+
+
+// 1. Breakepoint sizes
 
 $breakpoints: (
   // xs: 0,
@@ -20,13 +29,15 @@ $breakpoints: (
 
 
 
-@include export-once("breakpoints") {
+// 2. Body content for JS manipulatión
+
+@include export-once("core/breakpoints") {
 
   body {
-    content: "screen-xs";
-    @each $breakpoint in map-keys($breakpoints) {
-      @include response(from $breakpoint) {
-        content: "screen-#{$breakpoint}";
+    content: "screen-xs:0";
+    @each $name, $size in $breakpoints {
+      @include response(from $name) {
+        content: "screen-#{$name}:#{$size}";
       }
     }
   }
