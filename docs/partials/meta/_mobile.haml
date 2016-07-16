@@ -1,6 +1,6 @@
 -# MOBILE
-%meta{ name: "HandheldFriendly", content: "#{data.config.handheld_friendly}" }
-%meta{ name: "MobileOptimized", content: "#{data.config.mobile_optimized}" }
+%meta{ name: "HandheldFriendly", content: "True" }
+%meta{ name: "MobileOptimized", content: "320" }
 
 -# Standard viewport tag to set the viewport to the device's width,
 -# Android 2.3 devices need this so 100% width works properly and
@@ -11,13 +11,13 @@
 %meta{ name: "viewport", content: "width=device-width, initial-scale=1", media: "(device-height: 568px)" }
 
 -# Add to homescreen for Chrome on Android
-%meta{ name: "mobile-web-app-capable", content: "#{data.config.app_capable}" }
+%meta{ name: "mobile-web-app-capable", content: "yes" }
 
 -# For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
 -# IOS Shorter App title for homescreen (max 13 chars)
-%meta{ name: "apple-mobile-web-app-title",            content: "#{data.config.app_title}" }
-%meta{ name: "apple-mobile-web-app-capable",          content: "#{data.config.app_capable}" }
-%meta{ name: "apple-mobile-web-app-status-bar-style", content: "#{data.config.bar_style}" }
+%meta{ name: "apple-mobile-web-app-title",            content: "" }
+%meta{ name: "apple-mobile-web-app-capable",          content: "yes" }
+%meta{ name: "apple-mobile-web-app-status-bar-style", content: "black" }
 
 -# Disable automatic phone number detection.
 %meta{ name: "format-detection", content: "telephone=no" }
