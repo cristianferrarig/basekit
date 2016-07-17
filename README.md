@@ -1,28 +1,30 @@
 # BASEKIT
 
-- Assets
-  - Javascript
-  - Stylesheets
+- Tools
+- Settings
+- Core
+- Addons
+- Base
 
-- Config
-  - Data
-  - Locales
+- Utilities
+- Layouts
+- Components
 
-- Docs
-  - Assets
-  - Layouts
-  - Partials
 
-  - Sections
-    - Tools
-    - Settings
-    - Core
-    - Addons
-    - Base
+## Content
 
-    - Utilities
-    - Layouts
-    - Components
+assets
+helpers
+
+layouts
+partials
+
+docs
+  assets
+  data
+  locales
+
+temp
 
 
 ### LICENSE

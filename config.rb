@@ -28,9 +28,9 @@ end
 set :source,       "docs"
 set :build_dir,    "build"
 
-set :data_dir,     "config/data"
-set :locales_dir,  "config/locales"
-set :helpers_dir,  "config/helpers"
+set :data_dir,     "docs/_data"
+set :locales_dir,  "docs/_locales"
+set :helpers_dir,  "helpers"
 
 # Relative to source
 set :layouts_dir,  "../layouts"
