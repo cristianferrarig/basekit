@@ -1,29 +1,39 @@
-// Typography
-$font-size-lg:   1.25rem !default;
-$font-size-sm:   .875rem !default;
-$font-size-xs:   .75rem !default;
+//
+// SETTINGS
+//
+// 1. Settings
+// 2. Grid
+// 3. Typography
+//
 
 
-$font-size:     14px       !default;
-$font-family:   sans-serif !default;
+
+// 1. Settings
+
+$enable: (
+  flex:          false,
+  border-radius: false,
+) !default;
 
 
 
-// Grid
-
-// $unit:    8px !default;
-// $gutter:  $unit * 3 !default;
-// $spacing: $unit * 2 !default;
+// 2. Grid
 
 $unit:          8px !default;
 $columns:       12 !default;
 $gutter:        $unit * 4 !default;
 
+// $unit:    8px !default;
+// $gutter:  $unit * 3 !default;
+// $spacing: $unit * 2 !default;
 
 
 
+// 3. Typography
 
-// Settings
+$font-size-lg:   1.25rem !default;
+$font-size-sm:   .875rem !default;
+$font-size-xs:   .75rem !default;
 
-$enable-flex: false;
-
+$font-size:     14px       !default;
+$font-family:   sans-serif !default;

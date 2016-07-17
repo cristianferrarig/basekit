@@ -3,17 +3,12 @@ $oposite-directions: (
   right:  left,
   bottom: top,
   left:   right,
+  up:     down,
+  down:   up,
+  start:  end,
+  end:    start,
 );
-
-
 
 @function oposite($direction) {
   @return map-get($oposite-directions, $direction);
 }
-
-
-
-//  up:     down,
-//  down:   up,
-//  start:  end,
-//  end:    start,

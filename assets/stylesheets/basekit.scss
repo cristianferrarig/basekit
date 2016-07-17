@@ -1,17 +1,91 @@
+//
+// BASEKIT
+//
+// Tools, base and some more
+// -
+// 1. Toolkit    | Suite of tools
+// 2. Setings    | Global settings
+// 3. Core       | The essential
+// 4. Addons     | Styles for components
+// 5. Base       | HTML base components
+//
+// Bootstrap and more
+// -
+// 6. Utilities  | Global utilitie classes
+// 7. Layouts    | Estructural component
+// 8. Components | Awesome components
+//
+
+
+
 body { content: "Toolkit Ready!"; }
 
-@import "toolkit";    // Suite of tools
-@import "settings";   // Global settings
 
-@import "core";       // The essential
-@import "base";       // HTML base components
-@import "layouts";    // Estructural components
 
-// @import "components"; // Awesome components
-@import "utilities";  // Classes
+// 1. TOOLKIT
+// Suite of tools
 
-// @import "addons";
+   @import "tools/all";
 
-@import "uikit";
 
-@import "syntax";
+
+// 2. SETTINGS
+// Global settings
+
+   @import "settings";
+
+
+
+// 3. CORE
+// The essential
+
+   @import "core/reset";
+// @import "print";
+   @import "core/scaffold";
+   @import "core/breakpoints";
+   @import "core/colors";
+   @import "core/schema";
+
+
+
+// 4. ADDONS
+// Styles for components
+
+   @import "addons/syntax";
+
+
+
+// 5. BASE
+// HTML base components
+
+   @import "base/typography";
+// @import "base/images";
+// @import "base/code";
+// @import "base/tables";
+// @import "base/forms";
+// @import "base/buttons";
+
+
+
+// 6. UTILITIES
+// Global utilitie classes
+
+   @import "utilities/visibility";
+   @import "utilities/color";
+   @import "utilities/text";
+   @import "utilities/border";
+
+
+
+// 7. LAYOUTS
+// Estructural components
+//
+// @import "layouts/container";
+
+
+
+// 8. COMPONENTS
+// Awesome components
+//
+// @import "components/links";
+
