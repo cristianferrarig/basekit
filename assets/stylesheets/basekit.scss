@@ -40,18 +40,18 @@ body { content: "Toolkit Ready!"; }
 // The essential
 
    @import "core/reset";
-// @import "print";
    @import "core/scaffold";
    @import "core/breakpoints";
    @import "core/colors";
-   @import "core/schema";
+   @import "core/themes";
+// @import "core/print";
 
 
 
 // 4. ADDONS
 // Styles for components
-
-   @import "addons/syntax";
+//
+// @import "addons/syntax";
 
 
 

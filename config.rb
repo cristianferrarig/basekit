@@ -25,26 +25,26 @@ end
 
 
 # 2. Directories
-set :source,       "docs"
-set :build_dir,    "build"
+set :source,         "docs"
+set :build_dir,      "build"
 
-set :data_dir,     "docs/_data"
-set :locales_dir,  "docs/_locales"
-set :helpers_dir,  "helpers"
+set :data_dir,       "config/data"
+set :locales_dir,    "config/locales"
+set :helpers_dir,    "helpers"
 
 # Relative to source
-set :layouts_dir,  "../layouts"
-set :partials_dir, "../partials"
+set :layouts_dir,    "../layouts"
+set :partials_dir,   "partials"
 
-set :css_dir,      "assets/stylesheets"
-set :js_dir,       "assets/javascripts"
-set :images_dir,   "assets/images"
-set :fonts_dir,    "assets/fonts"
+set :css_dir,        "assets/stylesheets"
+set :js_dir,         "assets/javascripts"
+set :images_dir,     "assets/images"
+set :fonts_dir,      "assets/fonts"
 
 
 
 # 3. Layouts
-set :layout,       "default"
+set :layout,         "default"
 # page '/*', layout: "default"
 
 
