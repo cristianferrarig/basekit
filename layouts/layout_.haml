@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+
+    %meta{ charset: "utf-8" }
+
+    %title= "#{current_page.data.title}" + data.config.title
+
+    -# Always force latest IE rendering engine or request Chrome Frame
+    %meta{ "http-equiv" => "X-UA-Compatible", content: "IE=edge,chrome=1" }
+
+    -# Activate ClearType technology for smoothing fonts for easy reading in mobile IE
+    %meta{ "http-equiv" => "cleartype", content: "on" }
+
+    %meta{ name: "description", content: "" }
+    %meta{ name: "keywords",    content: "" }
+    %meta{ name: "author",      content: "Cristian Ferrari" }
+
+    -# SEO: If mobile URL is different from desktop URL, add a canonical link to the desktop page
+    -# %link{ rel: "canonical", href: "http://www.domain-name.com/" }
+
+    -# partial "meta/social"
+    = partial "meta/mobile"
+    -# partial "meta/brand"
+    = partial "meta/tricks"
+
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag  "hashgrid" if not build?
+
+    = partial "utils/oldie"
+
+  %body{ class: "#{page_classes}" }
+
+    = partial "utils/analytics" if build?
+
+    = yield
+
+    -# Placed at the end of the document so the pages load faster
+    = javascript_include_tag  "application"
+    = javascript_include_tag  "hashgrid" if not build?
